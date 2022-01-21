@@ -38,7 +38,7 @@ class ChessBoard {
         bool performMove(Move move);
         //metodo per giocatore: fornire posizioni
         //ritorna true se è possibile promozione, false altrimenti
-        bool performMove(pair<int, int>& start, pair<int, int>& destination);
+        bool performMove(pair<int, int>& start, pair<int, int>& , char color = 0);
         //metodo per computer: mossa presa automaticamente da nextPlayerMoves
         //ritorna true se è possibile promozione, false altrimenti
         bool performMove();

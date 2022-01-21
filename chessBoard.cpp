@@ -165,8 +165,10 @@ bool ChessBoard::performMove(Move move) {
     return false;
 }
 
-bool ChessBoard::performMove(pair<int, int>& start, pair<int, int>& destination) {
+bool ChessBoard::performMove(pair<int, int>& start, pair<int, int>& destination, char color) {
     if (!(legitMoveInput(start) && legitMoveInput(destination))) throw InvalidInputException();
+    //se viene specificato color (succede nel replay), genera le mosse disponibili
+    if (color != 0) nextPlayerMoves = movesAvailable(color);
     //salva puntatore in casella inserita
     Pieces* piece = board[start.first][start.second];
     //crea mossa con parametri sufficienti per controllo
