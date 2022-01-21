@@ -1,39 +1,49 @@
 #include "chessBoard.h"
-#include <iostream>
-#include <chrono>
 #include <thread>
+#include <chrono>
+#include <iostream>
 using namespace std;
+
+//acronimo di printTextEffect (standard: 1,250)
+void PTE(std::string s, int delayShort = 1, int delayLong = 250) {
+    for (int i = 0; i < s.size(); i++) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(delayShort));
+        std::cout << s[i];
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(delayLong));
+    std::cout << std::endl;
+}
 
 int main(int argc, char** args)
  {
     if (argc <= 2)
      {
-        cout << "Non sono stati inseriti gli argomenti necessari; rieseguire il programma." << endl;
+        PTE("Non sono stati inseriti gli argomenti necessari; rieseguire il programma.");
         return 0;
     }
 
     char op = *args[1];
     if (!(op == 'v' || op == 'f')) 
     {
-        cout << "Il codice per l'operazione inserito non è valido; rieseguire il programma." << endl;
+        PTE("Il codice per l'operazione inserito non è valido; rieseguire il programma.");
         return 0;
     }
 
     if (op == 'f' && argc == 3)
      {
-        cout << "Gli argomenti inseriti non sono sufficienti per il replay su file; rieseguire il programma." << endl;
+        PTE("Gli argomenti inseriti non sono sufficienti per il replay su file; rieseguire il programma.");
         return 0;
     }
 
     if (op == 'v' && argc > 3)
      {
-        cout << "Sono stati inseriti troppi argomenti per il replay a video; rieseguire il programma." << endl;
+        PTE("Sono stati inseriti troppi argomenti per il replay a video; rieseguire il programma.");
         return 0;
     }
 
     if (op == 'f' && argc > 4)
      {
-        cout << "Sono stati inseriti troppi argomenti per il replay su file; rieseguire il programma." << endl;
+        PTE("Sono stati inseriti troppi argomenti per il replay su file; rieseguire il programma.");
         return 0;
     }
 
@@ -48,17 +58,17 @@ int main(int argc, char** args)
 
     if (!scanner.good())
      {
-        cout << "Il file di log inserito non esiste; rieseguire il programma." << endl;
+        PTE("Il file di log inserito non esiste; rieseguire il programma.");
         return 0;
     }
 
-    cout << "Benvenuto nel replay delle partite di scacchi!" << endl;
+    PTE("Benvenuto nel replay delle partite di scacchi!");
     //stringa usata per salvare i messaggi da stampare nel corso del programma
     string message;
     message = "Verrà effettuato il replay ";
     message += (op == 'v') ? "a video " : "sul file '" + replayFile + "' ";
     message += "della partita salvata sul file di log '" + logFile + "'!";
-    cout << message << endl;
+    PTE(message);
     //ottiene nomi giocatori (prime due righe del log)
     string scannerLine;
     getline (scanner, scannerLine);
@@ -201,7 +211,7 @@ int main(int argc, char** args)
         //se replay a video, stampa messaggio costruito e scacchiera attuale a video
         if (op == 'v') 
         {
-            cout << message << endl;
+            PTE(message);
             if (pb) {
                 cout << board.printBoard();
                 this_thread::sleep_for(chrono::seconds(3));
@@ -215,6 +225,6 @@ int main(int argc, char** args)
         }
     }
     
-    if (op == 'f') cout << "Replay effettuato su " + replayFile + "!" << endl;
-    cout << "Replay finito!" << endl;
+    if (op == 'f') PTE("Replay effettuato su " + replayFile + "!");
+    PTE("Replay finito!");
 }

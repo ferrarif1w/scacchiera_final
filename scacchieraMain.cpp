@@ -1,12 +1,11 @@
 #include "chessBoard.h"
 #include "Gamers.h"
-//#include "PTE.cpp"
 #include <iostream>
-//#include <thread>
-//#include <chrono>
+#include <thread>
+#include <chrono>
 using namespace std;
 
-/*acronimo di printTextEffect (standard: 1,250)
+//acronimo di printTextEffect (standard: 1,250)
 void PTE(std::string s, int delayShort = 1, int delayLong = 250) {
     for (int i = 0; i < s.size(); i++) {
         std::this_thread::sleep_for(std::chrono::milliseconds(delayShort));
@@ -14,7 +13,7 @@ void PTE(std::string s, int delayShort = 1, int delayLong = 250) {
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(delayLong));
     std::cout << std::endl;
-}*/
+}
 
 //genera un nome per il file di log: log[primo numero disponibile tra file di log presenti in cartella logs].txt
 string CLN() {
@@ -41,23 +40,23 @@ int main(int argc, char** args) {
     srand(time(NULL));
     //controlla validità degli argomenti inseriti
     if (argc < 2) {
-        cout << "Non è stato inserito l'argomento necessario; rieseguire il prorgramma." << endl;
+        PTE("Non è stato inserito l'argomento necessario; rieseguire il prorgramma.");
         return 0;
     }
     if (argc > 2) {
-        cout << "Sono stati inseriti troppi argomenti; rieseguire il prorgramma." << endl;
+        PTE("Sono stati inseriti troppi argomenti; rieseguire il prorgramma.");
         return 0;
     }
     string game = args[1];
     if (!(game == "pc" || game == "cc")) {
-        cout << "L'argomento inserito non è valido; rieseguire il programma." << endl;
+        PTE("L'argomento inserito non è valido; rieseguire il programma.");
         return 0;
     }
     const char B = 66;
     const char U = 85;
     string message = "Benvenuto nel gioco degli scacchi! Verrà effettuata una partita ";
     message += (game == "pc") ? "tra giocatore umano e bot!" : "tra due bot!";
-    cout << message;
+    PTE(message);
     //vettori che memorizzeranno nome, tipo e oggetti Players dei due giocatori
     //tipo: U per giocatore umano, B per bot
     //in tutti i vettori, giocatore bianco, poi giocatore nero
@@ -69,27 +68,27 @@ int main(int argc, char** args) {
     //se white == 1, secondo giocatore inserito (computer) ha il bianco
     int whiteCode = randomDecision(2);
     if (game == "pc" && whiteCode == 0) {
-        cout << "Inserisci il nome del giocatore umano: " << endl;
+        PTE("Inserisci il nome del giocatore umano: ");
         cin >> names[0];
         //se il nome inserito è presente tra i nomi scelti per i bot, eliminarlo dalla lista
         auto tmp = find(botNames.begin(), botNames.end(), names[0]);
         if (tmp != botNames.end()) botNames.erase(tmp);
-        cout << "Giocherai con le pedine bianche!" << endl;
-        cout << "Se vuoi proporre una patta, inserisci 'patta' quando ti viene chiesto se vuoi stampare la scacchiera!" << endl;
+        PTE("Giocherai con le pedine bianche!");
+        PTE("Se vuoi proporre una patta, inserisci 'patta' quando ti viene chiesto se vuoi stampare la scacchiera!");
         names[1] = botNames[rand() % botNames.size()];
-        cout << "Il bot si chiama " + names[1] + " e giocherà con le pedine nere." << endl;
+        PTE("Il bot si chiama " + names[1] + " e giocherà con le pedine nere.");
         types.push_back(U);
         types.push_back(B);
     }
     else if (game == "pc" && whiteCode == 1) {
-        cout << "Inserisci il nome del giocatore umano: " << endl;
+        PTE("Inserisci il nome del giocatore umano: ");
         cin >> names[1];
         auto tmp = find(botNames.begin(), botNames.end(), names[0]);
         if (tmp != botNames.end()) botNames.erase(tmp);
-        cout << "Giocherai con le pedine nere!" << endl;
-        cout << "Se vuoi proporre una patta, inserisci 'patta' quando ti viene chiesto se vuoi stampare la scacchiera!" << endl;
+        PTE("Giocherai con le pedine nere!");
+        PTE("Se vuoi proporre una patta, inserisci 'patta' quando ti viene chiesto se vuoi stampare la scacchiera!");
         names[0] = botNames[rand() % botNames.size()];
-        cout << "Il bot si chiama " + names[0] + " e giocherà con le pedine bianche." << endl;
+        PTE("Il bot si chiama " + names[0] + " e giocherà con le pedine bianche.");
         types.push_back(B);
         types.push_back(U);
     }
@@ -99,8 +98,8 @@ int main(int argc, char** args) {
         //eliminare nome estratto per primo bot da lista di nomi
         botNames.erase(botNames.begin()+nameIndex);
         names[1] = botNames[rand() % 9];
-        cout << "Il bot che giocherà con le pedine bianche si chiama " + names[0] + "." << endl;
-        cout << "Il bot che giocherà con le pedine nere si chiama " + names[1] + "." << endl;
+        PTE("Il bot che giocherà con le pedine bianche si chiama " + names[0] + ".");
+        PTE("Il bot che giocherà con le pedine nere si chiama " + names[1] + ".");
         types.push_back(B);
         types.push_back(B);
     }
@@ -127,7 +126,7 @@ int main(int argc, char** args) {
         cond = players[index]->GetCondition();
         switch (cond) {
             case 0: //scaccomatto
-                cout << names[index] + " è in scaccomatto, " + names[(i+1)%2] + " vince! Ecco la scacchiera finale:" << endl;
+                PTE(names[index] + " è in scaccomatto, " + names[(i+1)%2] + " vince! Ecco la scacchiera finale:");
                 cout << board.printBoard();
                 endgame = true;
                 continue;
@@ -135,17 +134,17 @@ int main(int argc, char** args) {
                 message += " È sotto scacco!";
                 break;
             case 2: //stallo
-                cout << "È stato raggiunto uno stallo! Ecco la scacchiera finale:" << endl;
+                PTE("È stato raggiunto uno stallo! Ecco la scacchiera finale:");
                 cout << board.printBoard();
                 endgame = true;
                 continue;
             case 3: //patta per mancanza di pezzi
-                cout << "La partita termina in patta! Non ci sono abbastanza pezzi per eseguire uno scaccomatto! Ecco la scacchiera finale:" << endl;
+                PTE("La partita termina in patta! Non ci sono abbastanza pezzi per eseguire uno scaccomatto! Ecco la scacchiera finale:");
                 cout << board.printBoard();
                 endgame = true;
                 continue;
             case 4: //patta per 50 mosse
-                cout << "La partita termina in patta! Sono state eseguite 50 mosse senza spostare pedoni o mangiare pezzi! Ecco la scacchiera finale:" << endl;
+                PTE("La partita termina in patta! Sono state eseguite 50 mosse senza spostare pedoni o mangiare pezzi! Ecco la scacchiera finale:");
                 cout << board.printBoard();
                 endgame = true;
                 continue;
@@ -154,63 +153,63 @@ int main(int argc, char** args) {
                     message = "La configurazione attuale della scacchiera è comparsa per la terza volta! ";
                     //whiteCode rappresenta indice di giocatore umano in names
                     message += names[whiteCode] + ", vuoi dichiarare patta?";
-                    cout << message << endl;
+                    PTE(message);
                     char draw;
                     cin >> draw;
                     if (draw == 'y') {
-                        cout << "La partita termina in patta!" << endl;
+                        PTE("La partita termina in patta!");
                         endgame = true;
                     }
                     else {
-                        cout << "Si continua a giocare!" << endl;
+                        PTE("Si continua a giocare!");
                     }
                     continue;
                 }
                 else {  //bot-bot: decisione casuale su interruzione partita
                     message = "La configurazione attuale della scacchiera è comparsa per la terza volta! ";
                     message += names[index] + " può dichiarare patta!";
-                    cout << message;
+                    PTE(message);
                     if (randomDecision(BRDD)) {
-                        cout << names[index] + " dichiara patta! La partita termina!" << endl;
+                        PTE(names[index] + " dichiara patta! La partita termina!");
                         endgame = true;
                     }
                     else {
-                        cout << names[index] + " decide di continuare a giocare!" << endl;
+                        PTE(names[index] + " decide di continuare a giocare!");
                     }
                     continue;
                 }
         }
-        cout << message << endl;
+        PTE(message);
         Gamers* currentPlayer = players[index];
         if (types[index] == 'U') {  //giocatore umano
-            cout << "Se vuoi stampare la scacchiera, inserire 'y': " << endl;
+            PTE("Se vuoi stampare la scacchiera, inserire 'y': ");
             string code;
             cin >> code;
             if (code == "y") cout << board.printBoard();
             else if (code == "patta") { //se umano propone patta, bot decide casualmente se accettarla
                 if (randomDecision(BDAP)) {
-                    cout << names[(i+1)%2] + " accetta la patta! La partita termina!" << endl;
+                    PTE(names[(i+1)%2] + " accetta la patta! La partita termina!");
                     cond = 7;
                     endgame = true;
                     continue;
                 }
                 else {
-                    cout << names[(i+1)%2] + " non accetta la patta! La partita continua!" << endl;
+                    PTE(names[(i+1)%2] + " non accetta la patta! La partita continua!");
                 }
             }
             string start;
             string end;
             bool result;
             insertMove:
-            cout << "Inserisci le coordinate del pezzo che vuoi spostare e della casella nella quale vuoi spostare il pezzo: " << endl;
+            PTE("Inserisci le coordinate del pezzo che vuoi spostare e della casella nella quale vuoi spostare il pezzo: ");
             cin >> start >> end;
             try {result = currentPlayer->Move(start, end);}
             catch (ChessBoard::InvalidMoveException e) {    //mossa inserita non ammessa
-                cout << "La mossa inserita non è valida." << endl;
+                PTE("La mossa inserita non è valida.");
                 goto insertMove;    //ritorna all'inserimento della mossa
             }
             catch (ChessBoard::InvalidInputException e) {   //input non valido
-                cout << "L'input inserito non è valido." << endl;
+                PTE("L'input inserito non è valido.");
                 goto insertMove;    //ritorna all'inserimento della mossa
             }
             if (result) {   //promozione possibile
@@ -220,7 +219,7 @@ int main(int argc, char** args) {
                 message += pos.first + 49;  //incrementato di 49 per arrivare a numero che rappresenta riga
                 promotion:
                 message += "(sia maiuscolo che minuscolo):\n- A: alfiere;\n- C: cavallo;\n- D: regina;\n- T: torre.";
-                cout << message << endl;
+                PTE(message);
                 char code;
                 cin >> code;
                 try {board.performPromotion(code);}
@@ -235,32 +234,32 @@ int main(int argc, char** args) {
                 message = names[index] + " propone la patta!";
                 if (game == "pc") { //avversario umano: viene chiesto se accetta la patta
                     message += "  Vuoi accettare? ";
-                    cout << message << endl;
+                    PTE(message);
                     char answer;
                     cin >> answer;
                     if (answer == 'y') {
-                        cout << "Patta accettata! La partita termina!" << endl;
+                        PTE("Patta accettata! La partita termina!");
                         endgame = true;
                         cond = 7;
                         continue;
                     }
-                    else cout << "La partita continua!" << endl;
+                    else PTE("La partita continua!");
                 }
                 else {  //avversario bot: decide randomicamente se accettare patta
-                    cout << message << endl;
+                    PTE(message, 1, 250);
                     if (randomDecision(BDAP)) {
-                        cout << names[(i+1)%2] + " accetta la patta! La partita termina!" << endl;
+                        PTE(names[(i+1)%2] + " accetta la patta! La partita termina!");
                         endgame = true;
                         cond = 7;
                         continue;
                     }
                     else {
-                        cout << names[(i+1)%2] + " non accetta la patta! La partita continua!" << endl;
+                        PTE(names[(i+1)%2] + " non accetta la patta! La partita continua!");
                     }
                 }
             }
             bool result = currentPlayer->Move(); //eseguita mossa casuale
-            cout << "Mossa effettuata!" << endl;
+            PTE("Mossa effettuata!");
             if (result) {   //promozione posssibile
                 pair<int, int> pos = board.getPawnToPromote();
                 char newPiece = players[index]->PerformPromotion(); //pedone promosso in pezzo casuale
@@ -288,9 +287,9 @@ int main(int argc, char** args) {
     }
     //aggiorna log con informazioni su vittoria
     if (game == "cc" && i == movesThreshold) {
-        cout << "La partita termina in patta! È stata effettuata la " + to_string(movesThreshold) + "esima mossa totale!" << endl;
+        PTE("La partita termina in patta! È stata effettuata la " + to_string(movesThreshold) + "esima mossa totale!");
         cond = 6;
     }
     board.updateLogVictory(cond);
-    cout << "Grazie per aver giocato!" << endl; 
+    PTE("Grazie per aver giocato!"); 
 }
