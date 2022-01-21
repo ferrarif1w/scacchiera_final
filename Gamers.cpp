@@ -1,6 +1,6 @@
 #include "Gamers.h"
 
-Gamers::Gamers(char C, ChessBoard *B, string N, char T)
+Gamers::Gamers(char C, ChessBoard *B, std::string N, char T)
 {
     Name = N;
     Color = C;
@@ -9,7 +9,7 @@ Gamers::Gamers(char C, ChessBoard *B, string N, char T)
 }
 
 //player
-bool Gamers::Move(string start, string end)
+bool Gamers::Move(std::string start, std::string end)
 {
     int sFirst = start[1]-49;
     int sSecond = start[0]-65;
@@ -17,8 +17,8 @@ bool Gamers::Move(string start, string end)
     int fFirst = end[1]-49;
     int fSecond = end[0]-65;
     if (fSecond > 7) fSecond -= 32;
-    pair<int, int> s = pair<int, int>(sFirst, sSecond);
-    pair<int, int> f = pair<int, int>(fFirst, fSecond);
+    std::pair<int, int> s = std::pair<int, int>(sFirst, sSecond);
+    std::pair<int, int> f = std::pair<int, int>(fFirst, fSecond);
 
 return chessBoard->performMove(s, f);
 }

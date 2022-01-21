@@ -8,7 +8,7 @@ class Gamers
 
     protected:
 
-        string Name;
+        std::string Name;
         char Color;
         ChessBoard *chessBoard;
         char Type;
@@ -16,10 +16,10 @@ class Gamers
     public:
 
 //costruttore
-        Gamers(char C, ChessBoard *chessBoard, string N, char T);
+        Gamers(char C, ChessBoard *chessBoard, std::string N, char T);
 
 //player
-        bool Move(string start, string end);
+        bool Move(std::string start, std::string end);
         int GetCondition();
         void PerformPromotion(char code);
         char PerformPromotion();
