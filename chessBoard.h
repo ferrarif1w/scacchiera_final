@@ -123,7 +123,7 @@ class ChessBoard {
         //true se possibile arrocco, tipo di arrocco determinato da chiamante
         bool castlingConditions(Pieces* king, Pieces* tower);
         //mappa utilizzata in scanCheck
-        //chiave: direzione da cui può essere mangiato il re; valore: std::stringa con pezzi che possono
+        //chiave: direzione da cui può essere mangiato il re; valore: stringa con pezzi che possono
         //mangiare da quella direzione
         std::map<std::pair<int, int>, std::string> directionsPieces{
             {std::pair<int, int>(1, 1), "PRAD"},
