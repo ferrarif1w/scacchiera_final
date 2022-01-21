@@ -27,10 +27,6 @@ add_library(Pieces
 	Pieces.h
 	Pieces.cpp
 	)
-
-add_library(PTE
-    PTE.cpp
-    )
 	
 add_executable(scacchiera
 	scacchieraMain.cpp
@@ -44,11 +40,9 @@ target_link_libraries(scacchiera
 	ChessBoard
 	Gamers
 	Pieces
-	PTE
 	)
 
 target_link_libraries(replay
     ChessBoard
     Pieces
-    PTE
     )
