@@ -79,7 +79,7 @@ class ChessBoard {
         //vettore contenente le mosse disponibili al giocatore attuale
         std::vector<Move> nextPlayerMoves;
         //mappa che salva le configurazioni apparse e il numero di apparizioni di ciascuna
-        map<std::string, int> positions;
+        std::map<std::string, int> positions;
         //numero di mosse effettuate senza muovere pedoni e catturare pezzi (per patta per numero di mosse)
         int drawMoves;
         //numero di righe e colonne della scacchiera
