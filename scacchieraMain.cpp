@@ -1,3 +1,8 @@
+/**
+ * @file scacchieraMain.cpp
+ * @author Luca Fantin
+ */
+
 #include "chessBoard.h"
 #include "Gamers.h"
 #include <iostream>

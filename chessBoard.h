@@ -1,3 +1,8 @@
+/**
+ * @file chessBoard.h
+ * @author Luca Fantin
+ */
+
 #ifndef CHESSBOARD_H
 #define CHESSBOARD_H
 

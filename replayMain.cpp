@@ -1,3 +1,8 @@
+/**
+ * @file replayMain.cpp
+ * @author Marius Vasile Miculaiciuc
+ */
+
 #include "chessBoard.h"
 #include <thread>
 #include <chrono>

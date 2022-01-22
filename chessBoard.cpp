@@ -1,3 +1,8 @@
+/**
+ * @file chessBoard.cpp
+ * @author Luca Fantin
+ */
+
 #include "chessBoard.h"
 
 ChessBoard::Move::Move(Pieces* p, std::pair<int, int> dest, int name, Pieces* add = nullptr) : 
