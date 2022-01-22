@@ -27,7 +27,7 @@ string CLN() {
     scanner.open("blank.txt");
     string name;
     while (true) {
-        name = "logs/log" + to_string(++i) + ".txt";
+        name = "log" + to_string(++i) + ".txt";
         scanner.close();
         scanner.open(name);
         if (!scanner.good()) break;
@@ -109,7 +109,8 @@ int main(int argc, char** args) {
         types.push_back(B);
     }
     //genera scacchiera con nome di file di log e nomi dei giocatori
-    ChessBoard board = ChessBoard(CLN(), names[0], names[1]);
+    string logFile = CLN();
+    ChessBoard board = ChessBoard(logFile, names[0], names[1]);
     //genera oggetti giocatori e li inserisci in players
     players.push_back(new Gamers('B', &board, names[0], types[0]));
     players.push_back(new Gamers('N', &board, names[1], types[1]));
@@ -223,13 +224,13 @@ int main(int argc, char** args) {
                 message += pos.second + 65; //incrementato di 65 per arrivare a lettera che rappresenta colonna
                 message += pos.first + 49;  //incrementato di 49 per arrivare a numero che rappresenta riga
                 promotion:
-                message += "(sia maiuscolo che minuscolo):\n- A: alfiere;\n- C: cavallo;\n- D: regina;\n- T: torre.";
+                message += " (sia maiuscolo che minuscolo):\n- A: alfiere;\n- C: cavallo;\n- D: regina;\n- T: torre.";
                 PTE(message);
                 char code;
                 cin >> code;
-                try {board.performPromotion(code);}
+                try {players[index]->PerformPromotion(code);}
                 catch (ChessBoard::InvalidInputException e) {   //lettera inserita non valida
-                    message = "L'input non è valido, inserisci uno di questi pezzi ";
+                    message = "L'input non è valido, inserisci uno di questi pezzi";
                     goto promotion; //ritorna a inserimento pezzo
                 }
             }
@@ -296,5 +297,6 @@ int main(int argc, char** args) {
         cond = 6;
     }
     board.updateLogVictory(cond);
+    PTE("File di log generato: '" + logFile + "'!");
     PTE("Grazie per aver giocato!"); 
 }
