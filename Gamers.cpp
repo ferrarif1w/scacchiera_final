@@ -13,18 +13,6 @@ Gamers::Gamers(char C, ChessBoard *B)
 bool Gamers::Move(std::string start, std::string end)
 {
     //si trsforma la lettera della riga/colonna in un valore corrispondente (0-7) per la scacchiera
-<<<<<<< HEAD
-    int sFirst = start[1] - 49;         //1
-    int sSecond = start[0] - 65;        //A
-    //l'if serve nel caso il carattere sia una lettera minuscola
-    if (sSecond > 7)
-        sSecond -= 32;                  //32 è la distanza nella tabella ascii tra lettere maiuscole e minuscole
-
-    int fFirst = end[1] - 49;
-    int fSecond = end[0] - 65;
-    if (fSecond > 7)
-        fSecond -= 32;
-=======
     int sFirst = start[1]-49;               //1
     int sSecond = start[0] - 65;            //A
     //l'if serve nel caso il carattere sia una lettera minuscola
@@ -33,7 +21,6 @@ bool Gamers::Move(std::string start, std::string end)
     int fFirst = end[1]-49;
     int fSecond = end[0]-65;
     if (fSecond > 7) fSecond -= 32;
->>>>>>> 1ec587b8ff9513b67dd0ac902994eb8af2195029
     std::pair<int, int> s = std::pair<int, int>(sFirst, sSecond);
     std::pair<int, int> f = std::pair<int, int>(fFirst, fSecond);
 
@@ -48,12 +35,7 @@ int Gamers::GetCondition()
 void Gamers::PerformPromotion(char code)
 {
     char c = code;
-<<<<<<< HEAD
-    if (c > 90)
-        c -= 32;                        //se la lettera è minuscola diventa minuscola
-=======
     if (c > 90) c -= 32;                //se la lettera è minuscola diventa minuscola
->>>>>>> 1ec587b8ff9513b67dd0ac902994eb8af2195029
     chessBoard->performPromotion(c);
 }
 
