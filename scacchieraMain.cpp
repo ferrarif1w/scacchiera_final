@@ -122,7 +122,7 @@ int main(int argc, char** args) {
     int cond = 0; //variabile che identifica la condizione in cui si trova la partita
     constexpr int BDPP = 169; //prob. che bot proponga patta all'avversario (1/valore)
     constexpr int BDAP = 20; //prob. che bot accetti patta proposta dall'avversario (1/valore)
-    constexpr int BRDD = 1000; //prob. che bot dichiari patta per ripetizioni di posizione (1/valore)
+    constexpr int BRDD = 500; //prob. che bot dichiari patta per ripetizioni di posizione (1/valore)
     while (i != movesThreshold && !endgame) {
         int index = i%2;
         string message = "Turno di " + names[index] + " con le pedine ";
