@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGamers.a CMakeFiles/Gamers.dir/Gamers.cpp.o
+/usr/bin/ranlib libGamers.a

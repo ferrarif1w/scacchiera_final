@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/scacchiera.dir/scacchieraMain.cpp.o -o scacchiera  libChessBoard.a libGamers.a libPieces.a 

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPieces.a CMakeFiles/Pieces.dir/Pieces.cpp.o
+/usr/bin/ranlib libPieces.a
