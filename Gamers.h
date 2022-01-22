@@ -10,17 +10,11 @@
 class Gamers
 {
 
-protected:
+private:
     char Color;                                     //colore dei pezzi del giocatore
     ChessBoard *chessBoard; //scacchiera
 
-        char Color;                                     //colore dei pezzi del giocatore
-        ChessBoard *chessBoard;                         //scacchiera
-
-    //player
-    bool Move(std::string start, std::string end);  //metodo che esegue la mossa per il player
-    int GetCondition();                             //metodo che restituisce se la condizione del giocatore (vedere chessboard.h per la lista delle possibili condizioni)
-    void PerformPromotion(char code);               //metodo che fa effettuare la promozione di un pedone per il player
+public:
 
 //costruttore
         Gamers(char C, ChessBoard *chessBoard);         //costruttore dei due tipi di giocatori (bot e giocatore umano)
