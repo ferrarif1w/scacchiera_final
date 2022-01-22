@@ -1,3 +1,5 @@
 .vscode/settings.json
 .vscode
 *.exe
+*.a
+CMakeFiles/
