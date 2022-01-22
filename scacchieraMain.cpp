@@ -109,7 +109,8 @@ int main(int argc, char** args) {
         types.push_back(B);
     }
     //genera scacchiera con nome di file di log e nomi dei giocatori
-    ChessBoard board = ChessBoard(CLN(), names[0], names[1]);
+    string logFile = CLN();
+    ChessBoard board = ChessBoard(logFile, names[0], names[1]);
     //genera oggetti giocatori e li inserisci in players
     players.push_back(new Gamers('B', &board, names[0], types[0]));
     players.push_back(new Gamers('N', &board, names[1], types[1]));
@@ -296,5 +297,6 @@ int main(int argc, char** args) {
         cond = 6;
     }
     board.updateLogVictory(cond);
+    PTE("File di log generato: '" + logFile + "'!");
     PTE("Grazie per aver giocato!"); 
 }
