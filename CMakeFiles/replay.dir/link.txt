@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/replay.dir/replayMain.cpp.o -o replay  libChessBoard.a libPieces.a 

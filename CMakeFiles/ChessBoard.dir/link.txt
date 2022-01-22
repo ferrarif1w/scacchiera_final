@@ -1,2 +1,0 @@
-/usr/bin/ar qc libChessBoard.a CMakeFiles/ChessBoard.dir/chessBoard.cpp.o
-/usr/bin/ranlib libChessBoard.a

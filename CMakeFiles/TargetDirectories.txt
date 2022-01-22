@@ -1,7 +1,0 @@
-/home/sgaldon/sgaldon/scacchiera_final/CMakeFiles/rebuild_cache.dir
-/home/sgaldon/sgaldon/scacchiera_final/CMakeFiles/Gamers.dir
-/home/sgaldon/sgaldon/scacchiera_final/CMakeFiles/ChessBoard.dir
-/home/sgaldon/sgaldon/scacchiera_final/CMakeFiles/Pieces.dir
-/home/sgaldon/sgaldon/scacchiera_final/CMakeFiles/replay.dir
-/home/sgaldon/sgaldon/scacchiera_final/CMakeFiles/scacchiera.dir
-/home/sgaldon/sgaldon/scacchiera_final/CMakeFiles/edit_cache.dir
