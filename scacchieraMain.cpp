@@ -224,13 +224,13 @@ int main(int argc, char** args) {
                 message += pos.second + 65; //incrementato di 65 per arrivare a lettera che rappresenta colonna
                 message += pos.first + 49;  //incrementato di 49 per arrivare a numero che rappresenta riga
                 promotion:
-                message += "(sia maiuscolo che minuscolo):\n- A: alfiere;\n- C: cavallo;\n- D: regina;\n- T: torre.";
+                message += " (sia maiuscolo che minuscolo):\n- A: alfiere;\n- C: cavallo;\n- D: regina;\n- T: torre.";
                 PTE(message);
                 char code;
                 cin >> code;
                 try {players[index]->PerformPromotion(code);}
                 catch (ChessBoard::InvalidInputException e) {   //lettera inserita non valida
-                    message = "L'input non è valido, inserisci uno di questi pezzi ";
+                    message = "L'input non è valido, inserisci uno di questi pezzi";
                     goto promotion; //ritorna a inserimento pezzo
                 }
             }
