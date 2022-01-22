@@ -112,8 +112,8 @@ int main(int argc, char** args) {
     string logFile = CLN();
     ChessBoard board = ChessBoard(logFile, names[0], names[1]);
     //genera oggetti giocatori e li inserisci in players
-    players.push_back(new Gamers('B', &board, names[0], types[0]));
-    players.push_back(new Gamers('N', &board, names[1], types[1]));
+    players.push_back(new Gamers('B', &board));
+    players.push_back(new Gamers('N', &board));
     int i = 0; //contatore di mosse
     int index; //index = i%2: serve a determinare se è il turno del bianco o del nero
     //limite di mosse generale: 150 se game == "cc", -1 altrimenti (non deve esserci in partita umano-bot)
