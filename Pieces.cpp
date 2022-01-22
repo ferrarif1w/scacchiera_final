@@ -47,7 +47,11 @@ char Pieces::GetName()
 
 //costruttore e metodi dell'Alfiere
 //aggiunge gli spostamenti nelle diagonali fino al limite della scacchiera
+<<<<<<< HEAD
 std::vector<std::vector<std::pair<int, int>>> A::Pmove()
+=======
+std::vector<std::vector<std::pair<int, int> >> A::Pmove()
+>>>>>>> 1ec587b8ff9513b67dd0ac902994eb8af2195029
 {
     std::vector<std::vector<std::pair<int, int>>> Moves;
     int i = 1;
@@ -118,7 +122,11 @@ C::C(std::pair<int, int> position, char color, int moved) : Pieces(position, col
 
 //costruttore e metodi della Donna
 //aggiunge aggiunge gli spostamenti in tutte le direzioni fino al limite della scacchiera
+<<<<<<< HEAD
 std::vector<std::vector<std::pair<int, int>>> D::Pmove()
+=======
+std::vector<std::vector<std::pair<int, int> >> D::Pmove()
+>>>>>>> 1ec587b8ff9513b67dd0ac902994eb8af2195029
 {
     std::vector<std::vector<std::pair<int, int>>> Moves;
     int i = 1;
@@ -205,7 +213,11 @@ D::D(std::pair<int, int> position, char color, int moved) : Pieces(position, col
 
 //costruttore e metodi del Pedone
 //aggiunge gli spostamenti nella colonna in avanti di 1 o di 2 (se è la prima mossa)
+<<<<<<< HEAD
 std::vector<std::vector<std::pair<int, int>>> P::Pmove()
+=======
+std::vector<std::vector<std::pair<int, int> >> P::Pmove()
+>>>>>>> 1ec587b8ff9513b67dd0ac902994eb8af2195029
 {
     std::vector<std::vector<std::pair<int, int>>> Moves;
     std::vector<std::pair<int, int>> tmp;
@@ -230,7 +242,11 @@ P::P(std::pair<int, int> position, char color, int moved) : Pieces(position, col
 
 //costruttore e metodi del Re
 //aggiunge gli spostamenti in tutte le direzioni di 1
+<<<<<<< HEAD
 std::vector<std::vector<std::pair<int, int>>> R::Pmove()
+=======
+std::vector<std::vector<std::pair<int, int> >> R::Pmove()
+>>>>>>> 1ec587b8ff9513b67dd0ac902994eb8af2195029
 {
     std::vector<std::vector<std::pair<int, int>>> Moves;
     std::vector<std::pair<int, int>> tmp;
@@ -257,7 +273,11 @@ R::R(std::pair<int, int> position, char color, int moved) : Pieces(position, col
 
 //costruttore e metodi della Torre
 //aggiunge gli spostamenti nelle colonne e righe fino al limite della scacchiera
+<<<<<<< HEAD
 std::vector<std::vector<std::pair<int, int>>> T::Pmove()
+=======
+std::vector<std::vector<std::pair<int, int> >> T::Pmove()
+>>>>>>> 1ec587b8ff9513b67dd0ac902994eb8af2195029
 {
     std::vector<std::vector<std::pair<int, int>>> Moves;
     int i = 1;
