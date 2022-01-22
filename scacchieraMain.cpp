@@ -27,7 +27,7 @@ string CLN() {
     scanner.open("blank.txt");
     string name;
     while (true) {
-        name = "logs/log" + to_string(++i) + ".txt";
+        name = "log" + to_string(++i) + ".txt";
         scanner.close();
         scanner.open(name);
         if (!scanner.good()) break;
@@ -228,7 +228,7 @@ int main(int argc, char** args) {
                 PTE(message);
                 char code;
                 cin >> code;
-                try {board.performPromotion(code);}
+                try {players[index]->PerformPromotion(code);}
                 catch (ChessBoard::InvalidInputException e) {   //lettera inserita non valida
                     message = "L'input non è valido, inserisci uno di questi pezzi ";
                     goto promotion; //ritorna a inserimento pezzo
